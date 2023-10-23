@@ -13,4 +13,11 @@ public class Poster {
     public Poster(String url) {
         this.url = url;
     }
+
+    @Override
+    public String toString() {
+        return "Poster{" +
+                "url='" + url + '\'' +
+                '}';
+    }
 }
