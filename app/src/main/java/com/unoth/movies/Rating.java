@@ -3,7 +3,7 @@ package com.unoth.movies;
 import com.google.gson.annotations.SerializedName;
 
 public class Rating {
-    @SerializedName("rating")
+    @SerializedName("kp")
     private String rating;
 
     public String getRating() {
