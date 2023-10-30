@@ -14,6 +14,7 @@ import java.util.List;
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder> {
 
     private List<Movie> movies = new ArrayList<>();
+    private String textRatingFormat = "%.1f";
 
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
@@ -37,7 +38,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
         Glide.with(holder.imgViewPoster)
                 .load(movie.getPoster().getUrl())
                 .into(holder.imgViewPoster);
-        holder.textViewRating.setText(movie.getRating().getRating());
+        holder.textViewRating.setText(String.format(
+                textRatingFormat,
+                Double.parseDouble(movie.getRating().getRating())));
     }
 
     @Override
