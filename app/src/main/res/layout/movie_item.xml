@@ -25,12 +25,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:background="@android:color/holo_green_light"
-            android:padding="16dp"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:background="@drawable/circle_green"
             tools:text="9.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,13 @@
 package com.unoth.movies;
 
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import java.util.ArrayList;
@@ -38,9 +40,19 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
         Glide.with(holder.imgViewPoster)
                 .load(movie.getPoster().getUrl())
                 .into(holder.imgViewPoster);
-        holder.textViewRating.setText(String.format(
-                textRatingFormat,
-                Double.parseDouble(movie.getRating().getRating())));
+        double rating = movie.getRating().getRating();
+        int backgroundId;
+        if (rating > 7) {
+            backgroundId = R.drawable.circle_green;
+        } else if (rating > 5) {
+            backgroundId = R.drawable.circle_yellow;
+        } else {
+            backgroundId = R.drawable.circle_red;
+        }
+        Drawable drawable = ContextCompat.getDrawable(holder.itemView.getContext(), backgroundId);
+        holder.textViewRating.setBackground(drawable);
+        holder.textViewRating.setText(String.format(textRatingFormat, rating));
+
     }
 
     @Override
