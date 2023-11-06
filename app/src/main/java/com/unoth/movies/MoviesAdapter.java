@@ -16,7 +16,7 @@ import java.util.List;
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder> {
 
     private List<Movie> movies = new ArrayList<>();
-    private String textRatingFormat = "%.1f";
+    private final String textRatingFormat = "%.1f";
 
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
