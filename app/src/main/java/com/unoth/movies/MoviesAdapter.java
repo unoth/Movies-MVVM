@@ -1,6 +1,7 @@
 package com.unoth.movies;
 
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
 
     @Override
     public void onBindViewHolder(@NonNull MoviesViewHolder holder, int position) {
+        Log.d("MoviesAdapter", "onBindViewHolder: " + position);
         Movie movie = movies.get(position);
         Glide.with(holder.imgViewPoster)
                 .load(movie.getPoster().getUrl())
