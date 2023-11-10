@@ -1,9 +1,7 @@
 package com.unoth.movies;
 
-import android.util.Log;
-import android.widget.Adapter;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -31,5 +29,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         viewModel.loadMovies();
+        moviesAdapter.setOnReachEndListener(new MoviesAdapter.OnReachEndListener() {
+            @Override
+            public void onReachEnd() {
+                viewModel.loadMovies();
+            }
+        });
     }
 }

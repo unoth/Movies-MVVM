@@ -1,6 +1,7 @@
 package com.unoth.movies;
 
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +15,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder> {
+    private final String textRatingFormat = "%.1f";
+
+    private OnReachEndListener onReachEndListener;
+
+    public void setOnReachEndListener(OnReachEndListener onReachEndListener) {
+        this.onReachEndListener = onReachEndListener;
+    }
 
     private List<Movie> movies = new ArrayList<>();
-    private final String textRatingFormat = "%.1f";
 
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
         notifyDataSetChanged();
+    }
+
+    interface OnReachEndListener {
+        void onReachEnd();
     }
 
     @NonNull
@@ -36,6 +47,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
 
     @Override
     public void onBindViewHolder(@NonNull MoviesViewHolder holder, int position) {
+        Log.d("MoviesAdapter", "onBindViewHolder: " + position);
         Movie movie = movies.get(position);
         Glide.with(holder.imgViewPoster)
                 .load(movie.getPoster().getUrl())
@@ -52,7 +64,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
         Drawable drawable = ContextCompat.getDrawable(holder.itemView.getContext(), backgroundId);
         holder.textViewRating.setBackground(drawable);
         holder.textViewRating.setText(String.format(textRatingFormat, rating));
-
+        if (position == movies.size() - 1 && onReachEndListener != null) {
+            onReachEndListener.onReachEnd();
+        }
     }
 
     @Override
