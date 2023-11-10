@@ -14,13 +14,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder> {
+    private final String textRatingFormat = "%.1f";
+
+    private OnReachEndListener onReachEndListener;
+
+    public void setOnReachEndListener(OnReachEndListener onReachEndListener) {
+        this.onReachEndListener = onReachEndListener;
+    }
 
     private List<Movie> movies = new ArrayList<>();
-    private final String textRatingFormat = "%.1f";
 
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
         notifyDataSetChanged();
+    }
+
+    interface OnReachEndListener {
+        void onReachEnd();
     }
 
     @NonNull
@@ -52,7 +62,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
         Drawable drawable = ContextCompat.getDrawable(holder.itemView.getContext(), backgroundId);
         holder.textViewRating.setBackground(drawable);
         holder.textViewRating.setText(String.format(textRatingFormat, rating));
-
+        if (position == movies.size() - 1 && onReachEndListener != null) {
+            onReachEndListener.onReachEnd();
+        }
     }
 
     @Override
