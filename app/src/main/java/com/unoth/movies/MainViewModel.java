@@ -35,6 +35,10 @@ public class MainViewModel extends AndroidViewModel {
     }
 
     public void loadMovies() {
+        Boolean loading = isLoading.getValue();
+        if (loading != null && loading) {
+            return;
+        }
         Disposable disposable = ApiFactory.apiService.loadMovies(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -60,6 +64,7 @@ public class MainViewModel extends AndroidViewModel {
                         } else {
                             movies.setValue(movieResponse.getMovies());
                         }
+                        Log.d(TAG, "Loaded: " + page);
                         page++;
                     }
                 }, new Consumer<Throwable>() {
