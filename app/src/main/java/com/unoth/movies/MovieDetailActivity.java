@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.bumptech.glide.Glide;
 
 public class MovieDetailActivity extends AppCompatActivity {
 
@@ -21,6 +22,15 @@ public class MovieDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
         initViews();
+
+        Movie movie = (Movie) getIntent().getSerializableExtra(EXTRA_MOVIE);
+
+        Glide.with(MovieDetailActivity.this)
+                .load(movie.getPoster().getUrl())
+                .into(imgViewPoster);
+        textViewTitle.setText(movie.getName());
+        textViewYear.setText(String.valueOf(movie.getYear()));
+        textViewDescription.setText(movie.getDescription());
     }
 
     private void initViews() {
