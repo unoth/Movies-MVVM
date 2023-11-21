@@ -18,6 +18,11 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
     private final String textRatingFormat = "%.1f";
 
     private OnReachEndListener onReachEndListener;
+    private OnMovieClickListener onMovieClickListener;
+
+    public void setOnMovieClickListener(OnMovieClickListener onMovieClickListener) {
+        this.onMovieClickListener = onMovieClickListener;
+    }
 
     public void setOnReachEndListener(OnReachEndListener onReachEndListener) {
         this.onReachEndListener = onReachEndListener;
@@ -32,6 +37,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
 
     interface OnReachEndListener {
         void onReachEnd();
+    }
+
+    interface OnMovieClickListener {
+        void onMovieClick(Movie movie);
     }
 
     @NonNull
@@ -67,6 +76,14 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
         if (position >= movies.size() - 10 && onReachEndListener != null) {
             onReachEndListener.onReachEnd();
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (onMovieClickListener != null) {
+                    onMovieClickListener.onMovieClick(movie);
+                }
+            }
+        });
     }
 
     @Override
