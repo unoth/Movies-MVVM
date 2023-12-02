@@ -2,6 +2,7 @@ package com.unoth.movies;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -46,6 +47,14 @@ public class MovieDetailActivity extends AppCompatActivity {
             public void onChanged(List<Trailer> trailers) {
                 Log.d(TAG, trailers.toString());
                 trailersAdapter.setTrailers(trailers);
+            }
+        });
+        trailersAdapter.setOnTrailerClickListener(new TrailersAdapter.OnTrailerClickListener() {
+            @Override
+            public void onTrailerClick(Trailer trailer) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(trailer.getUrl()));
+                startActivity(intent);
             }
         });
     }
