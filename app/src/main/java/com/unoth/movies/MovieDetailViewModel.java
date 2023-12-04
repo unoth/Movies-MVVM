@@ -17,11 +17,15 @@ import java.util.List;
 public class MovieDetailViewModel extends AndroidViewModel {
     private static final String TAG = "MovieDetailViewModel";
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
-
     private final MutableLiveData<List<Trailer>> trailers = new MutableLiveData<>();
+    private final MutableLiveData<List<Review>> reviews = new MutableLiveData<>();
 
     public MovieDetailViewModel(@NonNull Application application) {
         super(application);
+    }
+
+    public LiveData<List<Review>> getReviews() {
+        return reviews;
     }
 
     public LiveData<List<Trailer>> getTrailers() {
@@ -42,6 +46,30 @@ public class MovieDetailViewModel extends AndroidViewModel {
                     @Override
                     public void accept(List<Trailer> trailerList) throws Throwable {
                         trailers.setValue(trailerList);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Throwable {
+                        Log.d(TAG, throwable.toString());
+                    }
+                });
+        compositeDisposable.add(disposable);
+    }
+
+    public void loadReview(int id) {
+        Disposable disposable = ApiFactory.apiService.loadReviews(id)
+                .map(new Function<ReviewResponse, List<Review>>() {
+                    @Override
+                    public List<Review> apply(ReviewResponse reviewResponse) throws Throwable {
+                        return reviewResponse.getReviews();
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<Review>>() {
+                    @Override
+                    public void accept(List<Review> reviewList) throws Throwable {
+                        reviews.setValue(reviewList);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
