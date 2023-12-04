@@ -16,7 +16,6 @@ import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder> {
     private final String textRatingFormat = "%.1f";
-
     private OnReachEndListener onReachEndListener;
     private OnMovieClickListener onMovieClickListener;
 
