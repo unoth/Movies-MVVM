@@ -10,7 +10,7 @@ public abstract class MovieDatabase extends RoomDatabase {
     private static final String DB_NAME = "movie.db";
     private static MovieDatabase instance = null;
 
-    private static MovieDatabase getInstance(Application application) {
+    public static MovieDatabase getInstance(Application application) {
         if (instance == null) {
             instance = Room.databaseBuilder(
                     application,

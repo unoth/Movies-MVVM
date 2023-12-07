@@ -41,7 +41,6 @@ public class MovieDetailActivity extends AppCompatActivity {
         reviewsAdapter = new ReviewsAdapter();
         recyclerViewReviews.setAdapter(reviewsAdapter);
 
-
         Movie movie = (Movie) getIntent().getSerializableExtra(EXTRA_MOVIE);
 
         Glide.with(MovieDetailActivity.this).load(movie.getPoster().getUrl()).into(imgViewPoster);
@@ -75,6 +74,13 @@ public class MovieDetailActivity extends AppCompatActivity {
                 reviewsAdapter.setReviews(reviews);
             }
         });
+
+        /* testing DB
+        MovieDao movieDao = MovieDatabase.getInstance(getApplication()).movieDao();
+        movieDao.insertMovie(movie)
+                .subscribeOn(Schedulers.io())
+                .subscribe();
+        */
     }
 
     private void initViews() {
