@@ -53,21 +53,31 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewTrailers"
-            android:nestedScrollingEnabled="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/textViewDescription"
             tools:listitem="@layout/trailer_item" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewReviews"
-            android:nestedScrollingEnabled="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/recyclerViewTrailers"
             tools:listitem="@layout/review_item" />
+
+        <ImageView
+            android:id="@+id/imageViewStar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/imgViewPoster"
+            app:layout_constraintEnd_toEndOf="@id/imgViewPoster"
+            app:layout_constraintTop_toBottomOf="@id/imgViewPoster"
+            tools:srcCompat="@android:drawable/btn_star_big_on" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
