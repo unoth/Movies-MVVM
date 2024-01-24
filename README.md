@@ -1,7 +1,7 @@
 # Movies
 API kinopoisk 1.4
 
-The Example app Movie with MVVM. The focuses on a subset of the components, namely LiveData, ViewModel and Room.
+The Example app Movie with MVVM architecture. The focuses on a subset of the components, namely LiveData, ViewModel and Room.
 <p>
   
  <img width="200px" src="https://github.com/unoth/Movies/assets/96779254/85c603e7-c99f-47a5-84ca-f6097c69dfa7" alt="MoviesApp_MainActivity"/>
