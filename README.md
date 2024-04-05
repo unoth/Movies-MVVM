@@ -12,7 +12,7 @@ The Example app Movie with MVVM architecture. The focuses on a subset of the com
 </p>
 
 - Loading data from Api and showing in RecyclerView using Retrofit.
-- Displaying ratings, descriptions, trailers, reviews for movies.
-- Ability added/removed movies to local.
-- Displaying ProgressBar when loading movies.
+- The app provides comprehensive movie details, including ratings, descriptions, trailers, and reviews.
+- Ability adding or removing movies locally.
+- Displaying ProgressBar when loading movies (providing visual feedback during data loading processes).
 
