@@ -1,7 +1,7 @@
 # Movies
-API kinopoisk 1.4
+[API kinopoisk 1.4](https://api.kinopoisk.dev/documentation/)
 
-The Example app Movie. The focuses on a subset of the components, namely LiveData, ViewModel and Room.
+The Example app Movie with MVVM architecture. The focuses on a subset of the components, namely LiveData, ViewModel and Room.
 <p>
   
  <img width="200px" src="https://github.com/unoth/Movies/assets/96779254/85c603e7-c99f-47a5-84ca-f6097c69dfa7" alt="MoviesApp_MainActivity"/>
@@ -12,7 +12,7 @@ The Example app Movie. The focuses on a subset of the components, namely LiveDat
 </p>
 
 - Loading data from Api and showing in RecyclerView using Retrofit.
-- Displaying ratings, descriptions, trailers, reviews for movies.
-- Ability added/removed movies to local.
-- Displaying ProgressBar when loading movies.
+- The app provides comprehensive movie details, including ratings, descriptions, trailers, and reviews.
+- Ability adding or removing movies locally.
+- Displaying ProgressBar when loading movies (providing visual feedback during data loading processes).
 
