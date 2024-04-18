@@ -16,3 +16,8 @@ The Example app Movie with MVVM architecture. The focuses on a subset of the com
 - Ability adding or removing movies locally.
 - Displaying ProgressBar when loading movies (providing visual feedback during data loading processes).
 
+UPD 1.0
+- Remove Title Bar
+ <img width="200px" src="https://github.com/unoth/Movies-MVVM/assets/96779254/3b5a4dd1-40e4-4d35-bc57-bba39dc6c665" alt="MoviesApp_MainActivity"/>
+ <img width="200px" src="https://github.com/unoth/Movies-MVVM/assets/96779254/2bbb0d98-b3b6-419d-ab2e-47032c56bb4b" alt="MoviesApp_DetailActivity"/>
+
